@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class='col-sm-6 col-sm-offset-3'>
+    <h1>{{ inset }}</h1>
+    <hr/>
+
+    <form method='POST' action=''>{% csrf_token %}
+        <p>{{ form.as_p }}</p>
+        <input type='submit' class='btn btn-primary' value='{{ inset }}' />
+    </form>
+</div>
+
+{% endblock content %}

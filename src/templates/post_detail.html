@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class='col-sm-6 col-sm-offset-3'>
+
+    {% if instance.image %}
+    <img src='{{ instance.image.url }}' class='img-responsive' />
+    {% endif %}
+
+    <h1>{{ title }}</h1>
+
+    <p>Author: {{ instance.user.first_name }}</p>
+<hr>
+<p>{{ instance.content }}</p>
+<hr>
+<a href="{% url 'posts:like' instance.id %}" class="btn btn-info" value="like">Likes: {{ count_likes }}</a>
+</div>
+
+
+    <div class='col-sm-6 col-sm-offset-3'>
+    <p class="lead">Comments</p>
+    <hr>
+    {% for comment in queryset %}
+    <blockquote>
+        {{ comment.content }}
+        <footer>{{ comment.user }} | {{ comment.timestamp|timesince }} ago</footer>
+    </blockquote>
+    <hr>
+    {% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if queryset.has_previous %}
+            <a href="?page={{ queryset.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+        </span>
+
+        {% if queryset.has_next %}
+            <a href="?page={{ queryset.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+    
+    <br>
+
+    <form method="POST" action=".">{% csrf_token %}
+    {{ comment_form.as_p }}
+    <input type="submit" value="Add" class="btn btn-info">
+    </form>
+
+    </div>
+
+
+
+
+{% endblock content %}
