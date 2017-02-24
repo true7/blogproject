@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 .env
 static_cdn/
+media_cdn/
 bin/
 include/
 lib/

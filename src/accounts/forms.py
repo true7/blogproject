@@ -32,6 +32,11 @@ class UserRegisterForm(forms.ModelForm):
     email2 = forms.EmailField(label='Confirm email', required=True)
     password = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password',widget=forms.PasswordInput)
+    first_name = forms.CharField(label='First name', max_length=30, required=False)
+    # last_name = forms.CharField(label='Last name', max_length=30, required=False)
+    # birthday = forms.DateField(label='Birthday', required=False)
+    country = forms.CharField(label='Country', max_length=30, required=False)
+    city = forms.CharField(label='City', max_length=30, required=False)
 
     def clean_email2(self):
         email = self.cleaned_data.get('email')

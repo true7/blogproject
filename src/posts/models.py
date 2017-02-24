@@ -6,7 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 
 def upload_location(instance, filename):
     return "%s/%s" %(instance.id, filename)
-
+    
 
 class Post(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)

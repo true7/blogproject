@@ -16,12 +16,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     city = models.CharField('city', max_length=30, blank=True)
     is_active = models.BooleanField('active', default=False)
     is_staff = models.BooleanField('staff status', default=False)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    # avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name']
+    REQUIRED_FIELDS = []
 
     class Meta:
         verbose_name = 'user'
